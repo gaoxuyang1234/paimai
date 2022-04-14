@@ -7,9 +7,7 @@ import com.yuanlrc.base.entity.common.BiddingProject;
 import com.yuanlrc.base.entity.home.BiddingApply;
 import com.yuanlrc.base.entity.home.BiddingRecord;
 import com.yuanlrc.base.entity.home.BiddingRemind;
-import com.yuanlrc.base.entity.home.HomeUser;
 import com.yuanlrc.base.service.admin.BiddingProjectService;
-import com.yuanlrc.base.service.admin.DatabaseBakService;
 import com.yuanlrc.base.service.home.BiddingApplyService;
 import com.yuanlrc.base.service.home.BiddingRecordService;
 import com.yuanlrc.base.service.home.BiddingRemindService;
@@ -23,7 +21,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 

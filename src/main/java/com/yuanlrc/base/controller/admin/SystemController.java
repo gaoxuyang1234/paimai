@@ -9,7 +9,6 @@ import com.yuanlrc.base.entity.admin.Role;
 import com.yuanlrc.base.entity.admin.User;
 import com.yuanlrc.base.entity.home.Organization;
 import com.yuanlrc.base.listener.SessionListener;
-import com.yuanlrc.base.service.admin.DatabaseBakService;
 import com.yuanlrc.base.service.admin.OrderAuthService;
 import com.yuanlrc.base.service.admin.UserService;
 import com.yuanlrc.base.service.home.OrganizationService;
@@ -43,8 +42,7 @@ public class SystemController {
 	@Autowired
 	private UserService userService;
 	
-	@Autowired
-	private DatabaseBakService databaseBakService;
+
 	@Autowired
 	private OrderAuthService orderAuthService;
 	@Autowired
@@ -172,7 +170,6 @@ public class SystemController {
 	public String index(Model model){
 
 		model.addAttribute("userTotal", userService.total());
-		model.addAttribute("databaseBackupTotal", databaseBakService.total());
 		model.addAttribute("onlineUserTotal", SessionListener.onlineUserCount);
 		return "admin/system/index";
 	}

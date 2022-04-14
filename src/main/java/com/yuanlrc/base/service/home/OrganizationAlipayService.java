@@ -2,9 +2,6 @@ package com.yuanlrc.base.service.home;
 
 import com.yuanlrc.base.bean.PageBean;
 import com.yuanlrc.base.dao.home.OrganizationAlipayDao;
-import com.yuanlrc.base.entity.common.BiddingProject;
-import com.yuanlrc.base.entity.common.NewsType;
-import com.yuanlrc.base.entity.home.Organization;
 import com.yuanlrc.base.entity.home.OrganizationAlipay;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;

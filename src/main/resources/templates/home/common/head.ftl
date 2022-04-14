@@ -71,8 +71,7 @@
             <a id="auctionList" href="/home/agency/list">竞价大厅</a>
 <#--            <a id="mechanism"href="/home/org/list">交易机构</a>-->
             <a id="solution" href="/home/common_problem/list">常见问题</a>
-            <a id="head_news"href="/home/news/list">新闻资讯</a>
-            <a id="announcements" href="/home/inform/list">通知</a>
+
         </div>
     </div>
 </div>

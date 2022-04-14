@@ -42,10 +42,9 @@
             <a  href="/home/index/index" style="border: unset">首页</a>
             <a  href="/home/bidding/transaction">产权交易</a>
             <a  href="/home/agency/list">竞价大厅</a>
-<#--            <a  href="/home/org/list">交易机构</a>-->
             <a  href="/home/common_problem/list"> 常见问题</a>
-            <a  href="/home/news/list">新闻咨询</a>
-            <a  href="/home/inform/list">通知公告</a>
+
+
         </div>
 
         <div class="phone_box">
