@@ -124,34 +124,8 @@
         </#list>
     </#if>
 </div>
-<!-- 引导 -->
-<#--<div class="home_guide">-->
-<#--    <img src="/home/images/middle_guide.png" alt="home_guide"/>-->
-<#--</div>-->
 
-<div class="auction_hall_all">
-    <div class="auction_hall_all_title">最新新闻
-        <div style="float: right">
-            <a href="/home/news/list">
-                更多
-                <img src="/home/images/more.png" style="width: 12px;" alt="more"/>
-            </a>
-        </div>
-    </div>
-</div>
-<!-- 新闻展示 -->
-<div class="content_display" style="height:400px;">
-    <#if newsList?size gt 0>
-        <#list newsList as news>
-            <div class="content_list_pic" style="margin-left: 18px; height: 200px;">
-                <img class="content_pic" src="/photo/view?filename=${news.picture}"
-                     onclick='window.location.href="/home/news/detail?id=${news.id}"'>
-                <div class="content_list_title">${news.caption}</div>
 
-            </div>
-        </#list>
-    </#if>
-</div>
 
     <#include "../common/foot.ftl"/>
 

@@ -70,7 +70,6 @@
             <a id="auctionHall" href="/home/bidding/transaction">产权交易</a>
             <a id="auctionList" href="/home/agency/list">竞价大厅</a>
 <#--            <a id="mechanism"href="/home/org/list">交易机构</a>-->
-            <a id="solution" href="/home/common_problem/list">常见问题</a>
 
         </div>
     </div>

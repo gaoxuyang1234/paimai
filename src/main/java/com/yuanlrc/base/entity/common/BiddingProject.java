@@ -27,16 +27,13 @@ public class BiddingProject extends BaseEntity {
     @JoinColumn(name = "label_type_id")
     private LabelType labelType;//标的类型 √
 
-    @ValidateEntity(required = true, errorRequiredMsg = "省不能为空")
-    @Column(name = "province", nullable = false)
+   @Column(name = "province", nullable = false)
     private String province;//省 √
 
-    @ValidateEntity(required = true, errorRequiredMsg = "市不能为空")
-    @Column(name = "city", nullable = false)
+   @Column(name = "city", nullable = false)
     private String city;//市 √
 
-    @ValidateEntity(required = true, errorRequiredMsg = "区不能为空")
-    @Column(name = "area", nullable = false)
+   @Column(name = "area", nullable = false)
     private String area;//区 √
 
     @Enumerated
@@ -77,8 +74,7 @@ public class BiddingProject extends BaseEntity {
     @Column(name = "title", nullable = false)
     private String title;//标题 √
 
-    @ValidateEntity(required = true, errorRequiredMsg = "请填写转出方",minLength = 2,maxLength = 10,requiredLeng = true,errorMinLengthMsg = "转出方至少为2个字",errorMaxLengthMsg = "转出方最多为10个字")
-    @Column(name = "transferor", nullable = false)
+   @Column(name = "transferor", nullable = false)
     private String transferor;//转出方 √
 
     @Column(name = "start_price", nullable = false, length = 11)
@@ -112,7 +108,6 @@ public class BiddingProject extends BaseEntity {
     @Column(name = "bidding_information")
     private String biddingInformation;//竞买须知√
 
-    @ValidateEntity(required = true,errorRequiredMsg = "请填写尾款线上支付截止",requiredLeng = true,minLength = 4,maxLength = 20,errorMinLengthMsg = "尾款截止至少为4个字",errorMaxLengthMsg = "尾款截止最多为20个字")
     @Column(name = "payment_date")
     private String paymentDate;//尾款线上支付截止日期√
 
@@ -141,8 +136,7 @@ public class BiddingProject extends BaseEntity {
     @Column(name = "applicants_number")
     private int applicantsNumber;//报名人数
 
-    @ValidateEntity(required = true,errorRequiredMsg = "请填写尾款支付方式",requiredLeng = true,minLength = 1,maxLength =10,errorMinLengthMsg = "尾款支付方式至少为1个字",errorMaxLengthMsg = "尾款支付方式最多为10个字")
-    @Column(name = "payment_method")
+   @Column(name = "payment_method")
     private String paymentMethod;//尾款支付方式√
 
     @Column(name = "delay_period")
