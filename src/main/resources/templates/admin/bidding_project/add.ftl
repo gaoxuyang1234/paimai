@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
     <title>${siteName!""}|竞拍管理-添加竞拍项目</title>
-<#include "../common/header.ftl"/>
+    <#include "../common/header.ftl"/>
     <link href="/admin/datepicker/bootstrap-datetimepicker.css" rel="stylesheet">
     <link href="/admin/kindeditor/themes/default/default.css" type="text/css" rel="stylesheet">
 
@@ -22,13 +22,13 @@
                                              alt="${siteName!""}"/></a>
             </div>
             <div class="lyear-layout-sidebar-scroll">
-        <#include "../common/left-menu.ftl"/>
+                <#include "../common/left-menu.ftl"/>
             </div>
 
         </aside>
         <!--End 左侧导航-->
-    
-    <#include "../common/header-menu.ftl"/>
+
+        <#include "../common/header-menu.ftl"/>
 
         <!--页面主要内容-->
         <main class="lyear-layout-content">
@@ -55,7 +55,26 @@
                                             </ul>
                                         </div>
                                     </div>
-
+                                    <div class="form-group col-md-12">
+                                        <label>授权书上传</label>
+                                        <div class="form-controls">
+                                            <ul class="list-inline clearfix lyear-uploads-pic">
+                                                <li class="col-xs-4 col-sm-3 col-md-2">
+                                                    <figure>
+                                                        <img src="/admin/images/default-head.jpg" id="show-picture-img"
+                                                             alt="默认头像">
+                                                    </figure>
+                                                </li>
+                                                <input type="hidden" name="certificate" id="certificate">
+                                                <input type="file" id="select-file" style="display:none;"
+                                                       onchange="upload('show-picture-img','certificate')">
+                                                <li class="col-xs-4 col-sm-3 col-md-2">
+                                                    <a class="pic-add" id="add-certificate-btn" href="javascript:void(0)"
+                                                       title="点击上传"></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-xs-6">
@@ -68,14 +87,29 @@
                                                 <label>标的物类型</label>
                                                 <select name="labelType.id" class="form-control select" id="add-labelType" tips="请选择标的物类型">
                                                     <option value="-1">--请选择标的物类型--</option>
-                                    	<#list labelTypeList as labelType>
-                                            <option value="${labelType.id}">${labelType.name}</option>
-                                        </#list>
+                                                    <#list labelTypeList as labelType>
+                                                        <option value="${labelType.id}">${labelType.name}</option>
+                                                    </#list>
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
-
+                                    <div class="form-group">
+                                        <div class="row" id="distpicker5">
+                                            <div class="col-xs-4">
+                                                <label>省</label>
+                                                <select class="form-control" id="add-province" name="province"></select>
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <label>市</label>
+                                                <select class="form-control" id="add-city" name="city"></select>
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <label>区</label>
+                                                <select class="form-control" id="add-area" name="area"></select>
+                                            </div>
+                                        </div>
+                                    </div>
 
                                     <div class="input-group m-b-10">
                                         <div class="row">
@@ -114,9 +148,32 @@
 
                                     <div class="form-group">
                                         <div class="row">
-
-
-
+                                            <div class="col-xs-1">
+                                                <label>是否有年限</label>
+                                                <br>
+                                                <label class="lyear-switch switch-solid switch-primary"
+                                                       id="switch-years"
+                                                       style="margin-left: 10px;margin-top: 10px;">
+                                                    <input type="checkbox" value="0" name="yearsType"
+                                                           id="add-yearsType">
+                                                    <span></span>
+                                                </label>
+                                            </div>
+                                            <div class="col-xs-2" id="add-years" style="display: none">
+                                                <label>年限数</label>
+                                                <div class="input-group m-b-10">
+                                                    <input type="number" class="form-control" id="years" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"
+                                                           name="years"
+                                                           value="1" min="1" placeholder="请输入年限数" tips="请输入年限数"/>
+                                                    <span class="input-group-addon">年</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-2">
+                                                <label>转出方</label>
+                                                <input type="text" class="form-control required" id="add-transferor"
+                                                       name="transferor"
+                                                       value="" placeholder="请输入转出方" tips="请输入转出方"/>
+                                            </div>
                                             <div class="col-xs-2">
                                                 <label>起拍价</label>
                                                 <input type="number" class="form-control required" id="add-startPrice" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^0-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"
@@ -135,7 +192,43 @@
                                                        name="bond"
                                                        value="0" min="0" placeholder="请输入保证金" tips="请输入保证金"/>
                                             </div>
-
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-xs-2">
+                                                <label>佣金比例</label>
+                                                <div class="input-group m-b-10">
+                                                    <input type="number" class="form-control required" id="add-rate" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^0-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"
+                                                           name="rate"
+                                                           value="0" min="0" max="100" placeholder="佣金比例" tips="请输入佣金比例"/>
+                                                    <span class="input-group-addon">%</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-2">
+                                                <label>尾款线上支付截止</label>
+                                                <input type="text" class="form-control required" id="add-paymentDate"
+                                                       name="paymentDate"
+                                                       value="" placeholder="例如:竞价结束后15个自然日" tips="请输入尾款线上支付截止"/>
+                                            </div>
+                                            <div class="col-xs-2">
+                                                <label>尾款支付方式</label>
+                                                <input type="text" class="form-control required" id="add-paymentMethod"
+                                                       name="paymentMethod"
+                                                       value="" placeholder="例如: 通过平台交易支付" tips="请输入尾款支付方式"/>
+                                            </div>
+                                            <div class="col-xs-2">
+                                                <label>延时周期</label>
+                                                <div class="input-group m-b-10">
+                                                    <select name="delayPeriod" class="form-control select" id="delayPeriod" tips="请选择延时周期">
+                                                        <option value="-1">--请选择延时周期--</option>
+                                                        <#list cycleTypeList as cycleType>
+                                                            <option value="${cycleType.days}">${cycleType.days}</option>
+                                                        </#list>
+                                                    </select>
+                                                    <span class="input-group-addon">分钟</span>
+                                                </div>
+                                            </div>
                                             <div class="col-xs-2">
                                                 <label>联系人</label>
                                                 <input type="text" class="form-control required" id="add-contacts"
@@ -149,8 +242,6 @@
                                                        value="" placeholder="请填写联系电话" tips="请填写联系电话"/>
                                             </div>
                                         </div>
-                                    </div>
-
                                     </div>
                                     <div class="input-group m-b-10" >
                                         <span class="input-group-addon">详情描述</span>
@@ -206,11 +297,11 @@
     $(document).ready(function () {
         //提交按钮监听事件
         $("#add-form-submit-btn").click(function () {
-           var picture= $(document.getElementById("picture")).val();
-           if(picture==""||picture==null){
-               showWarningMsg("请上传封面图");
-               return;
-           }
+            var picture= $(document.getElementById("picture")).val();
+            if(picture==""||picture==null){
+                showWarningMsg("请上传封面图");
+                return;
+            }
             if (!checkForm("bidding-add-form")) {
                 return;
             }
@@ -220,13 +311,36 @@
             if(!checkSelectForm("form-control.select")){
                 return;
             }
-
-
-
-           if($("#add-description").val()==""){
-               showWarningMsg("请填写详情描述");
-               return;
-           }
+            if($("#add-yearsType").val()!="0"){
+                if($("#years").val()==""){
+                    showWarningMsg("请填写年限数！");
+                    return;
+                }
+                if($("#years").val()<=0){
+                    showWarningMsg("年限数至少为一年");
+                    return;
+                }
+            }
+            if(Number($("#add-rate").val())>100){
+                showWarningMsg("佣金比例不能大于100");
+                return;
+            }
+            if($("#add-province").val()==""){
+                showWarningMsg("请选择省");
+                return;
+            }
+            if($("#add-city").val()==""){
+                showWarningMsg("请选择市");
+                return;
+            }
+            if($("#add-area").val()==""){
+                showWarningMsg("请选择区");
+                return;
+            }
+            if($("#add-description").val()==""){
+                showWarningMsg("请填写详情描述");
+                return;
+            }
             if($("#add-notice").val()==""){
                 showWarningMsg("请填写竞买公告");
                 return;
@@ -245,7 +359,7 @@
                 return;
             }
             var data = $("#bidding-add-form").serialize();
-           $.ajax({
+            $.ajax({
                 url: 'add',
                 type: 'POST',
                 data: data,

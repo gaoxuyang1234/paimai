@@ -3,7 +3,6 @@ package com.yuanlrc.base.service.home;
 import com.yuanlrc.base.bean.PageBean;
 import com.yuanlrc.base.dao.home.BiddingCollectDao;
 import com.yuanlrc.base.entity.home.BiddingCollect;
-import com.yuanlrc.base.entity.home.NewsCollect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
