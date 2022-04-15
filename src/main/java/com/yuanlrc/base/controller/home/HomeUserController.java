@@ -6,9 +6,7 @@ import com.yuanlrc.base.bean.Result;
 import com.yuanlrc.base.bean.UserStatus;
 import com.yuanlrc.base.constant.SessionConstant;
 import com.yuanlrc.base.entity.home.HomeUser;
-import com.yuanlrc.base.entity.home.UserAlipay;
 import com.yuanlrc.base.service.home.HomeUserService;
-import com.yuanlrc.base.service.home.UserAlipayService;
 import com.yuanlrc.base.util.SessionUtil;
 import com.yuanlrc.base.util.StringUtil;
 import com.yuanlrc.base.util.ValidateEntityUtil;
@@ -32,8 +30,7 @@ public class HomeUserController {
 
 
 
-    @Autowired
-    private UserAlipayService userAlipayService;
+
 
     /**
      * 注册页面
@@ -405,23 +402,6 @@ public class HomeUserController {
         return Result.success(true);
     }
 
-
-
-    /**
-     * 充值管理页面
-     * @param model
-     * @param pageBean
-     * @return
-     */
-    @GetMapping("/alipay")
-    public String alipay(Model model, PageBean<UserAlipay> pageBean){
-        HomeUser loginedHomeUser = SessionUtil.getLoginedHomeUser();
-        if(loginedHomeUser == null){
-            return "redirect:login";
-        }
-        model.addAttribute("pageBean",userAlipayService.findList(loginedHomeUser.getId(),pageBean));
-        return "home/home_user/alipay";
-    }
 
 
 

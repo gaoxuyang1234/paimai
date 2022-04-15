@@ -1,12 +1,10 @@
 package com.yuanlrc.base.controller.home;
 
 import com.yuanlrc.base.bean.*;
-import com.yuanlrc.base.entity.common.BiddingProject;
 import com.yuanlrc.base.entity.home.*;
 import com.yuanlrc.base.service.home.BiddingApplyService;
 import com.yuanlrc.base.service.home.BiddingRecordService;
 import com.yuanlrc.base.service.home.HomeUserService;
-import com.yuanlrc.base.service.home.MessageAndReplyService;
 import com.yuanlrc.base.util.SessionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 /**
  * 前台用户项目相关Controller
@@ -35,8 +32,6 @@ public class UserBiddingController {
     @Autowired
     private HomeUserService homeUserService;
 
-    @Autowired
-    private MessageAndReplyService messageAndReplyService;
 
     /**
      * 前台用户报名项目列表
@@ -71,23 +66,6 @@ public class UserBiddingController {
         return "home/home_user/bidding_record";
     }
 
-    /**
-     * 留言表
-     * @param model
-     * @param title
-     * @param pageBean
-     * @return
-     */
-    @RequestMapping("/message")
-    public String message(Model model, String title, PageBean<MessageAndReply> pageBean){
-        HomeUser loginedHomeUser = SessionUtil.getLoginedHomeUser();
-        if(loginedHomeUser == null){
-            return "redirect:/home/user/login";
-        }
-        model.addAttribute("title",title);
-        model.addAttribute("pageBean",messageAndReplyService.findList(loginedHomeUser.getId(),pageBean,title ==null ? "" : title));
-        return "home/home_user/message";
-    }
 
     /**
      * 中标项目确认支付

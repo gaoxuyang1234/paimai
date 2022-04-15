@@ -2,12 +2,9 @@
 package com.yuanlrc.base.service.home;
 
 import com.yuanlrc.base.bean.PageBean;
-import com.yuanlrc.base.bean.UserBiddingStatus;
 import com.yuanlrc.base.dao.home.BiddingApplyDao;
-import com.yuanlrc.base.entity.common.BiddingProject;
 import com.yuanlrc.base.entity.home.BiddingApply;
 import com.yuanlrc.base.entity.home.ProjectTimeVO;
-import com.yuanlrc.base.entity.home.UserAlipay;
 import com.yuanlrc.base.util.DateUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +19,6 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
