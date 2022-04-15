@@ -46,18 +46,6 @@
                 <div class="per_left_circle"></div>
                 <a href="/home/bidding/record">领先项目</a>
             </div>
-            <div class="per_left_tab_list collect left_tab_1">
-                <i class="iconfont icon-shoucang1"></i>
-                <a href="/home/collect/bidding">我的收藏</a>
-            </div>
-            <div class="per_left_tab_list per_left_tab_list_2 collect-auction">
-                <div class="per_left_circle"></div>
-                <a href="/home/collect/bidding">收藏的项目</a>
-            </div>
-            <div class="per_left_tab_list per_left_tab_list_2 collect-news">
-                <div class="per_left_circle"></div>
-                <a href="/home/collect/news">收藏的新闻</a>
-            </div>
         </div>
     </div>
 </div>

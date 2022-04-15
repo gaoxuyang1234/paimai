@@ -286,16 +286,7 @@
                 </#if>
                 <div class="zj_function zj_page">
                     <#if ylrc_home??>
-                        <#if projectCollect??>
-                            <span class="p-lr-10" onclick="deleteBiddingCollect(${projectCollect.id})"
-                                  style="cursor: pointer">
-                               <i class="iconfont icon-heart"></i>取消收藏
-                            </span>
-                        <#else>
-                            <span class="p-lr-10" onclick="addBiddingCollect()" style="cursor: pointer">
-                               <i class="iconfont icon-shoucang"></i>收藏
-                             </span>
-                        </#if>
+
                         <#if biddingRemind??>
                             <span class="p-lr-10" onclick="deleteBiddingRemind(${biddingRemind.id})"
                                   style="cursor: pointer">
@@ -307,7 +298,6 @@
                              </span>
                         </#if>
                     </#if>
-                <#--<a class="icon-shoucangp like" onclick="addBiddingCollect()"><i class="iconfont  icon-shoucang"></i>收藏</a>-->
                 </div>
             </div>
             <#if projectDetail.projectStatus.getCode()==10>
@@ -495,9 +485,7 @@
                 <span class="margin-top-20">地址：</span><span>${projectDetail.organization.address!""}</span>
             </p>
 
-            <p>
-                <button class="layui-btn" onclick="message()">留言咨询</button>
-            </p>
+
         </div>
     </div>
 
@@ -680,89 +668,6 @@
         });
     }
 
-    function sendMessage(message) {
-        if (message == null || message == "") {
-            layer.msg("留言不能为空");
-            return;
-        }
-        $.ajax({
-            url: '/home/message/add',
-            type: 'post',
-            data: {
-                projectId: projectId,
-                message: message
-            },
-            dataType: 'json',
-            success: function (data) {
-                if (data.code == 0) {
-                    layer.msg("留言已发送");
-                    setInterval(function () {
-                        window.location.reload();
-                    }, 1000);
-                } else {
-                    layer.msg(data.msg);
-                }
-            },
-            error: function (data) {
-                alert('网络错误!');
-            }
-        })
-
-    }
-
-    /**
-     * 添加收藏
-     * @param projectId
-     */
-    function addBiddingCollect() {
-        $.ajax({
-            url: '/home/collect/add_project',
-            type: 'post',
-            data: {
-                projectId: projectId,
-            },
-            dataType: 'json',
-            success: function (data) {
-                if (data.code == 0) {
-                    layer.msg("添加收藏成功");
-                    setInterval(function () {
-                        window.location.reload();
-                    }, 1000);
-                } else {
-                    layer.msg(data.msg);
-                }
-            },
-            error: function (data) {
-                alert('网络错误!');
-            }
-        })
-    }
-
-    /**
-     * 取消收藏
-     * @param id
-     */
-    function deleteBiddingCollect(id) {
-        $.ajax({
-            url: "/home/collect/delete_project",
-            type: 'POST',
-            data: {id: id},
-            dataType: 'json',
-            success: function (data) {
-                if (data.code == 0) {
-                    layer.msg("取消收藏成功");
-                    setInterval(function () {
-                        window.location.reload();
-                    }, 1000);
-                } else {
-                    layer.msg(data.msg);
-                }
-            },
-            error: function (data) {
-                alert('网络错误!');
-            }
-        });
-    }
 
     /**
      * 设置提醒

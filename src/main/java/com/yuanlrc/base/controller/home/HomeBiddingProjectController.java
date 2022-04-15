@@ -44,8 +44,6 @@ public class HomeBiddingProjectController {
     @Autowired
     private BiddingApplyService biddingApplyService;
 
-    @Autowired
-    private BiddingCollectService biddingCollectService;
 
     @Autowired
     private BiddingRemindService biddingRemindService;
@@ -111,8 +109,7 @@ public class HomeBiddingProjectController {
         model.addAttribute("cycleDate", cycleDate);
         model.addAttribute("projectDetail", biddingProject);
         model.addAttribute("biddingRemind", loginedHomeUser == null ? null : biddingRemindService.findByBiddingProjectIdAndHomeUserId(id, loginedHomeUser.getId()));
-        model.addAttribute("projectCollect", loginedHomeUser == null ? null : biddingCollectService.findByBiddingProjectIdAndHomeUserId(id, loginedHomeUser.getId()));
-        return "/home/project/detail";
+       return "/home/project/detail";
     }
 
     /**
