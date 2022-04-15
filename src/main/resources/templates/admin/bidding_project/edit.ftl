@@ -72,32 +72,6 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-12">
-                                        <label>授权书上传</label>
-                                        <div class="form-controls">
-                                            <ul class="list-inline clearfix lyear-uploads-pic">
-                                                <li class="col-xs-4 col-sm-3 col-md-2">
-                                                    <figure>
-
-                                                        <#if biddingProject.certificate??>
-                            <#if biddingProject.certificate?length gt 0>
-                                <img src="/photo/view?filename=${biddingProject.certificate}" id="show-picture-img" width="130px" height="150px">
-                            <#else>
-                    		<img src="/admin/images/default-head.jpg" id="show-picture-img" alt="默认头像" width="130px" height="150px">
-                            </#if>
-                                                        </#if>
-                                                    </figure>
-                                                </li>
-                                                <input type="hidden" name="certificate" id="certificate" value="${biddingProject.certificate}">
-                                                <input type="file" id="select-file" style="display:none;"
-                                                       onchange="upload('show-picture-img','certificate')">
-                                                <li class="col-xs-4 col-sm-3 col-md-2">
-                                                    <a class="pic-add" id="edit-certificate-btn" href="javascript:void(0)"
-                                                       title="点击上传"></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-xs-6">
@@ -173,32 +147,7 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="row">
-                                            <div class="col-xs-1">
-                                                <label>是否有年限</label>
-                                                <br>
-                                                <label class="lyear-switch switch-solid switch-primary"
-                                                       id="switch-years"
-                                                       style="margin-left: 10px;margin-top: 10px;">
-                                                    <input type="checkbox" value="${biddingProject.yearsType}"<#if biddingProject.yearsType==1>checked</#if> name="yearsType"
-                                                           id="edit-yearsType">
-                                                    <span></span>
-                                                </label>
-                                            </div>
-                                            <div class="col-xs-2" id="edit-years" style="display: none">
-                                                <label>年限数</label>
-                                                <div class="input-group m-b-10">
-                                                    <input type="number" class="form-control" id="edit-year"
-                                                           name="years"
-                                                           value="${biddingProject.years!"1"}" min="1" placeholder="请输入年限数" tips="请输入年限数" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"/>
-                                                    <span class="input-group-addon">年</span>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-2">
-                                                <label>转出方</label>
-                                                <input type="text" class="form-control required" id="edit-transferor"
-                                                       name="transferor"
-                                                       value="${biddingProject.transferor}" placeholder="请输入转出方" tips="请输入转出方"/>
-                                            </div>
+
                                             <div class="col-xs-2">
                                                 <label>起拍价</label>
                                                 <input type="number" class="form-control required" id="edit-startPrice" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^0-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"
@@ -217,43 +166,6 @@
                                                        name="bond"
                                                        value="${biddingProject.bond}" min="0" placeholder="请输入保证金" tips="请输入保证金"/>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-xs-2">
-                                                <label>佣金比例</label>
-                                                <div class="input-group m-b-10">
-                                                    <input type="number" class="form-control required" id="edit-rate" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^0-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"
-                                                           name="rate"
-                                                           value="${biddingProject.rate}" min="1" max="100" placeholder="佣金比例" tips="请输入佣金比例"/>
-                                                    <span class="input-group-addon">%</span>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-2">
-                                                <label>尾款线上支付截止</label>
-                                                <input type="text" class="form-control required" id="edit-paymentDate"
-                                                       name="paymentDate"
-                                                       value="${biddingProject.paymentDate}" placeholder="例如:竞价结束后15个自然日" tips="请输入尾款线上支付截止"/>
-                                            </div>
-                                            <div class="col-xs-2">
-                                                <label>尾款支付方式</label>
-                                                <input type="text" class="form-control required" id="edit-paymentMethod"
-                                                       name="paymentMethod"
-                                                       value="${biddingProject.paymentMethod}" placeholder="例如: 通过平台交易支付" tips="请输入尾款支付方式"/>
-                                            </div>
-                                            <div class="col-xs-2">
-                                                <label>延时周期</label>
-                                                <div class="input-group m-b-10">
-                                                    <select name="delayPeriod" class="form-control select" id="edit-delayPeriod" tips="请选择延时周期">
-                                                        <option value="-1">--请选择延时周期--</option>
-                                    	<#list cycleTypeList as cycleType>
-                                            <option value="${cycleType.days}" <#if biddingProject.delayPeriod==cycleType.days>selected</#if>>${cycleType.days}</option>
-                                        </#list>
-                                                    </select>
-                                                    <span class="input-group-addon">分钟</span>
-                                                </div>
-                                            </div>
                                             <div class="col-xs-2">
                                                 <label>联系人</label>
                                                 <input type="text" class="form-control required" id="edit-contacts"
@@ -268,6 +180,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="input-group m-b-10" >
                                         <span class="input-group-addon">详情描述</span>
                                         <textarea style="width:auto;height:250px" id="edit-description"

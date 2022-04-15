@@ -7,12 +7,8 @@ import com.yuanlrc.base.bean.UserStatus;
 import com.yuanlrc.base.constant.SessionConstant;
 import com.yuanlrc.base.entity.home.HomeUser;
 import com.yuanlrc.base.entity.home.UserAlipay;
-import com.yuanlrc.base.entity.home.UserBankCard;
-import com.yuanlrc.base.entity.home.UserWithdrawalRecord;
 import com.yuanlrc.base.service.home.HomeUserService;
 import com.yuanlrc.base.service.home.UserAlipayService;
-import com.yuanlrc.base.service.home.UserBankCardService;
-import com.yuanlrc.base.service.home.UserWithdrawalRecordService;
 import com.yuanlrc.base.util.SessionUtil;
 import com.yuanlrc.base.util.StringUtil;
 import com.yuanlrc.base.util.ValidateEntityUtil;
@@ -34,14 +30,10 @@ public class HomeUserController {
     @Autowired
     private HomeUserService homeUserService;
 
-    @Autowired
-    private UserBankCardService userBankCardService;
+
 
     @Autowired
     private UserAlipayService userAlipayService;
-
-    @Autowired
-    private UserWithdrawalRecordService userWithdrawalRecordService;
 
     /**
      * 注册页面
@@ -413,20 +405,7 @@ public class HomeUserController {
         return Result.success(true);
     }
 
-    /**
-     * 银行卡管理页面
-     * @param model
-     * @return
-     */
-    @GetMapping("/bankCard")
-    public String bankCard(Model model, PageBean<UserBankCard> pageBean){
-        HomeUser loginedHomeUser = SessionUtil.getLoginedHomeUser();
-        if(loginedHomeUser == null){
-            return "redirect:login";
-        }
-        model.addAttribute("pageBean",userBankCardService.findList(loginedHomeUser.getId(),pageBean));
-        return "home/home_user/bankCard";
-    }
+
 
     /**
      * 充值管理页面
@@ -444,22 +423,7 @@ public class HomeUserController {
         return "home/home_user/alipay";
     }
 
-    /**
-     * 提现管理页面
-     * @param model
-     * @param pageBean
-     * @return
-     */
-    @GetMapping("/withdrawalRecord")
-    public String withdrawalRecord(Model model, PageBean<UserWithdrawalRecord> pageBean){
-        HomeUser loginedHomeUser = SessionUtil.getLoginedHomeUser();
-        if(loginedHomeUser == null){
-            return "redirect:login";
-        }
-        model.addAttribute("bankCardList",userBankCardService.finByHomeUserId(loginedHomeUser.getId()));
-        model.addAttribute("pageBean",userWithdrawalRecordService.findList(loginedHomeUser.getId(),pageBean));
-        return "home/home_user/withdrawal_record";
-    }
+
 
     /**
      * 确认支付密码
